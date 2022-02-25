@@ -1,0 +1,29 @@
+@import './variables.scss';
+@import './editor.scss';
+@import './helpers.scss';
+@import './topNav.scss';
+
+html {
+    background-color: $mainBackground;
+    overflow-x: hidden;
+}
+#app {
+    color: $font;
+    margin: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+}
+
+// transitions
+.fade-enter-active,
+.fade-leave-active {
+  opacity: 1;
+  transition: opacity 0.2s;
+}
+
+.fade-leave-to,
+.fade-enter {
+  opacity: 0;
+}

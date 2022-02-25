@@ -1,0 +1,22 @@
+@import './variables.scss';
+
+.is-editor-wrapper {
+    margin: 0.5rem;
+}
+
+.is-editor {
+    width: 90vw;
+    height: 70vh;
+    background-color: $mainBackground;
+    border-radius: 20px;
+    outline: none;
+    font-size: 1.3rem;
+    padding: 10px;
+}
+
+.is-markdown-content {
+    text-align: left !important;
+    max-width: 90vw;
+    padding: 10px;
+    word-break: break-all;
+}

@@ -94,7 +94,7 @@ export default {
         inputFile (val) {
             if (val != '') this.inputText = val
         },
-        shareFile (val) {
+        share (val) {
             if (val) this.share()
         }
     },

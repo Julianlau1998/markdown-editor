@@ -8,18 +8,10 @@
     flex-direction: column;
 }
 
-.button {
-    border: none;
-    border-radius: 20px;
-    padding: 0.5rem;
-    cursor: pointer;
-    
-    &.is-primary {
-        background-color: $primary;
-        color: black;
-        font-size: 1.3rem;
-    }
-}
+.is-justify-content-center {
+    display: flex;
+    justify-content: center;
+} 
 
 .is-primary {
     color: $primary;

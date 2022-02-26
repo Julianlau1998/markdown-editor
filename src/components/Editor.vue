@@ -9,7 +9,12 @@
                     Preview
                     <i class="fas fa-eye pl-1 pr-2" /> 
                 </button>
-                <button v-if="!preview" :key="1" class="button is-primary ml-4 pl-4" @click="downloadFile">
+                <button
+                    v-if="!preview"
+                    :key="1"
+                    class="button is-primary ml-4 pl-4"
+                    @click="saveFileModalOpen = true"
+                >
                     Save File
                     <i class="fas fa-download pl-1 pr-2" /> 
                 </button>
@@ -22,7 +27,10 @@
                     Edit
                     <i class="fas fa-highlighter pl-1 pr-2" /> 
                 </button>
-                <button class="button is-primary ml-3 pl-4" @click="downloadFile">
+                <button
+                    class="button is-primary ml-3 pl-4" 
+                    @click="saveFileModalOpen = true"
+                >
                     Save File
                     <i class="fas fa-download pl-1 pr-2" /> 
                 </button>
@@ -35,7 +43,7 @@
                 <textarea
                     v-model="inputText"
                     class="is-editor pt-5 pb-5 is-primary mt-1"
-                    placeholder="Type Your Markdown here"
+                    placeholder="Type your markdown here"
                 />
             </div>
             <div v-else :key="2" class="is-markdown-content">
@@ -45,20 +53,30 @@
                 </p>
             </div>
         </transition>
+        <SaveModal
+            v-if="saveFileModalOpen"
+            @save="downloadFile"
+            @close="saveFileModalOpen=false"
+        />
   </div>
 </template>
 
 <script>
+import SaveModal from '@/components/modals/SaveModal'
 const markdown = require( "markdown" ).markdown;
 
 export default {
     name: 'Editor',
+    components: {
+        SaveModal
+    },
     data () {
         return  {
             inputText: '',
             markdownText: '',
             preview: false,
-            markdownWrapper: ''
+            markdownWrapper: '',
+            saveFileModalOpen: false
         }
     },
     created () {
@@ -70,14 +88,18 @@ export default {
             }
             this.preview = !this.preview
         },
-        downloadFile () {
-            const file = new Blob([this.inputText], { type: "data:text/csv;charset=utf-8" }, "MarkdownFile.md")
+        saveFileModal () {
+            this.saveFileModalOpen = true
+        },
+        downloadFile (fileName) {
+            const file = new Blob([this.inputText], { type: "data:text/csv;charset=utf-8" }, `${fileName}.md`)
             const link = window.URL.createObjectURL(file)
 
             let hiddenElement = document.createElement('a')
             hiddenElement.href = link
-            hiddenElement.download = 'MarkdownFile.md'  
+            hiddenElement.download = `${fileName}.md`
             hiddenElement.click();  
+            this.saveFileModalOpen = false
         }
     }
 }

@@ -16,6 +16,55 @@ html {
     overflow: hidden;
 }
 
+.modal {
+    margin: auto;
+    position: absolute;
+    top: 0; left: 0; bottom: 0; right: 0;
+    width: 20rem;
+    height: 15rem;
+    background-color: $secondBackground;
+    border: 2px solid $secondary;
+    border-radius: 20px;
+    text-align: center; 
+    z-index: 11;
+}
+
+.is-modal-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: $mainBackground;
+    z-index: 10;
+    opacity: 0.6;
+}
+
+.button {
+    border: 2px solid black;
+    border-radius: 20px;
+    padding: 0.5rem;
+    cursor: pointer;
+    margin: 0.5rem;
+    
+    &.is-primary {
+        background-color: $primary;
+        color: black;
+        font-size: 1.3rem;
+    }
+    &.is-secondary {
+        background-color: $secondary;
+        color: black;
+        font-size: 1.3rem;
+    }
+}
+
+.input {
+    width: 70%;
+    height: 1.5rem;
+    margin: -3rem 0 1.2rem 0;
+}
+
 // transitions
 .fade-enter-active,
 .fade-leave-active {

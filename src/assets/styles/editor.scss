@@ -6,7 +6,7 @@
 
 .is-editor {
     width: 90vw;
-    height: 70vh;
+    height: 65vh;
     background-color: $mainBackground;
     border-radius: 20px;
     outline: none;
@@ -16,7 +16,8 @@
 
 .is-markdown-content {
     text-align: left !important;
-    max-width: 90vw;
+    max-width: 80vw;
+    margin: 0 2rem 0 2rem;
     padding: 10px;
     word-break: break-all;
 }

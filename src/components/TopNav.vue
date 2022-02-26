@@ -23,7 +23,7 @@
                             Import File
                         </span>
                     </label>
-                    <span v-if="shareAvailable" class="is-pointer mt-6 setting">
+                    <span v-if="shareAvailable" @click="share" class="is-pointer mt-6 setting">
                         Share File
                     </span>
                 </div>

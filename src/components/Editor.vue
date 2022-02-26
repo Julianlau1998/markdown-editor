@@ -108,9 +108,12 @@ export default {
         saveFileModal () {
             this.saveFileModalOpen = true
         },
-        downloadFile (fileName) {
+        createFileLink (fileName) {
             const file = new Blob([this.inputText], { type: "data:text/csv;charset=utf-8" }, `${fileName}.md`)
-            const link = window.URL.createObjectURL(file)
+            return window.URL.createObjectURL(file)
+        },
+        downloadFile (fileName) {
+            const link = this.createFileLink(fileName)
 
             let hiddenElement = document.createElement('a')
             hiddenElement.href = link
@@ -119,10 +122,11 @@ export default {
             this.saveFileModalOpen = false
         },
         shareFile () {
+            const fileLink = this.createFileLink('MarkdownFile') 
             if (this.inputText.length) {
                 navigator.share({
                     "title": 'Markdown File',
-                    "text": this.inputText
+                    "url": fileLink
                 })
             }
         },

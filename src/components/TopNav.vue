@@ -17,13 +17,13 @@
             </div> -->
             <div class="column settingsWrapper">
                 <div v-if="settings" class="settingsItems settings">
-                    <label class="label is-pointer setting">
+                    <label class="label is-pointer setting noselect">
                         <input @change="fileInput" accept=".txt, .md" type="file" required/>
                         <span>
                             Import File
                         </span>
                     </label>
-                    <span v-if="shareAvailable" @click="share" class="is-pointer mt-6 setting">
+                    <span v-if="shareAvailable" @click="share" class="is-pointer mt-6 setting noselect">
                         Share File
                     </span>
                 </div>

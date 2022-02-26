@@ -70,6 +70,17 @@ export default {
     components: {
         SaveModal
     },
+    props: {
+        inputFile: {
+            type: String,
+            required: false,
+            default: ''
+        },
+        share: {
+            type: Boolean,
+            required: true
+        }
+    },
     data () {
         return  {
             inputText: '',
@@ -79,7 +90,13 @@ export default {
             saveFileModalOpen: false
         }
     },
-    created () {
+    watch: {
+        inputFile (val) {
+            if (val != '') this.inputText = val
+        },
+        shareFile (val) {
+            if (val) this.share()
+        }
     },
     methods: {
         createMarkdown () {
@@ -100,7 +117,15 @@ export default {
             hiddenElement.download = `${fileName}.md`
             hiddenElement.click();  
             this.saveFileModalOpen = false
-        }
+        },
+        sharFile () {
+            if (this.inputText.length) {
+                navigator.share({
+                    "title": 'Markdown File',
+                    "text": this.inputText
+                })
+            }
+        },
     }
 }
 </script>

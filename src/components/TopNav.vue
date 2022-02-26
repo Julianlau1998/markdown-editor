@@ -15,6 +15,23 @@
                     @click="settings=!settings"
                 />
             </div> -->
+            <div class="column settingsWrapper">
+                <div v-if="settings" class="settingsItems settings">
+                    <label class="label is-pointer setting">
+                        <input @change="fileInput" accept=".txt, .md" type="file" required/>
+                        <span>
+                            Import File
+                        </span>
+                    </label>
+                    <span v-if="shareAvailable" class="is-pointer mt-6 setting">
+                        Share File
+                    </span>
+                </div>
+                <i
+                    class="fas fa-ellipsis-v settings-icon is-pointer"
+                    @click="settings=!settings"
+                />
+            </div>
         </div>
     </div>
 </template>
@@ -34,13 +51,15 @@ export default {
         }
     },
     methods: {
-        recommend () {
-            // todo: Uncomment after release to play store
-
-            // navigator.share({
-            //     "title": 'Simply Create Markdown files on your Phone with this app',
-            //     "text": 'https://play.google.com/store/apps/details?id=xyz.appmaker.fdfdjd&gl=DE'
-            // })
+        share () {
+            this.$emit('share')
+        },
+        fileInput (event) {
+            const file = event.target.files[0];
+            const reader = new FileReader();
+            reader.onload = e => this.$emit('fileInput', e.target.result);
+            reader.readAsText(file);
+            this.settings = false
         }
     }
 }

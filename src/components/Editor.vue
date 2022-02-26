@@ -113,7 +113,7 @@ export default {
             return window.URL.createObjectURL(file)
         },
         downloadFile (fileName) {
-            const link = this.createFileLink(fileName)
+            const link = this.createFileLink (fileName)
 
             let hiddenElement = document.createElement('a')
             hiddenElement.href = link
@@ -122,11 +122,10 @@ export default {
             this.saveFileModalOpen = false
         },
         shareFile () {
-            const fileLink = this.createFileLink('MarkdownFile') 
             if (this.inputText.length) {
                 navigator.share({
                     "title": 'Markdown File',
-                    "url": fileLink
+                    "text": this.inputText
                 })
             }
         },

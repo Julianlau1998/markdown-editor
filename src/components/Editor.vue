@@ -118,7 +118,7 @@ export default {
             hiddenElement.click();  
             this.saveFileModalOpen = false
         },
-        sharFile () {
+        shareFile () {
             if (this.inputText.length) {
                 navigator.share({
                     "title": 'Markdown File',

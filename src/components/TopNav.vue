@@ -6,15 +6,6 @@
                     md-Editor
                 </span>
             </div>
-            <!-- <div class="column settingsWrapper" v-if="!shareAvailable">
-                <span v-if="settings" class="settings is-pointer p-2 mt-6 ">
-                    Recommend
-                </span>
-                <i
-                    class="fas fa-ellipsis-v settings-icon is-pointer"
-                    @click="settings=!settings"
-                />
-            </div> -->
             <div class="column settingsWrapper">
                 <div v-if="settings" class="settingsItems settings">
                     <label class="label is-pointer setting noselect">

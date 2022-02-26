@@ -4,7 +4,7 @@
         <div class="modal">
             <form>
                 <h2>
-                    Enter File Name
+                    Save File
                 </h2>
                 <br>
                 <input

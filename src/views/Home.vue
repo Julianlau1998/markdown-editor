@@ -27,10 +27,9 @@ export default {
     },
     shareFile () {
       this.share = true
-      setTimeout(200)
-      .then (() => {
+      setTimeout(() => {
         this.share = false
-      })
+      }, 300)
     }
   }
 }

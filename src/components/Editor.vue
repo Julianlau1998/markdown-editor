@@ -3,7 +3,7 @@
         <transition name="fade" mode="out-in">
             <span v-if="!preview" :key="1">
                 <button
-                    @click="createMarkdown"
+                    @click="preview = !preview"
                     class="button is-primary mt-5 pl-4"
                 >
                     Preview
@@ -21,19 +21,19 @@
             </span>
             <span v-else :key="2">
                 <button
-                    @click="createMarkdown"
+                    @click="preview = !preview"
                     class="button is-primary mt-5 pl-4"
                 >
                     Edit
                     <i class="fas fa-highlighter pl-1 pr-2" /> 
                 </button>
-                <button
+                <!-- <button
                     class="button is-primary ml-3 pl-4" 
                     @click="saveFileModalOpen = true"
                 >
                     Save File
                     <i class="fas fa-download pl-1 pr-2" /> 
-                </button>
+                </button> -->
             </span>
         </transition>
         <br>
@@ -47,10 +47,7 @@
                 />
             </div>
             <div v-else :key="2" class="is-markdown-content">
-                <p>
-                    <span v-html="markdownText">
-                    </span>
-                </p>
+                <VueMarkdown :source="inputText" />
             </div>
         </transition>
         <SaveModal
@@ -63,12 +60,13 @@
 
 <script>
 import SaveModal from '@/components/modals/SaveModal'
-const markdown = require( "markdown" ).markdown;
+import VueMarkdown from 'vue-markdown'
 
 export default {
     name: 'Editor',
     components: {
-        SaveModal
+        SaveModal,
+        VueMarkdown
     },
     props: {
         inputFile: {
@@ -84,7 +82,6 @@ export default {
     data () {
         return  {
             inputText: '',
-            markdownText: '',
             preview: false,
             markdownWrapper: '',
             saveFileModalOpen: false
@@ -99,12 +96,6 @@ export default {
         }
     },
     methods: {
-        createMarkdown () {
-            if (!this.preview) {
-                this.markdownText = markdown.toHTML(this.inputText)
-            }
-            this.preview = !this.preview
-        },
         saveFileModal () {
             this.saveFileModalOpen = true
         },

@@ -63,6 +63,11 @@ html {
     width: 70%;
     height: 1.5rem;
     margin: -3rem 0 1.2rem 0;
+    padding: 5px;
+    background-color: $secondBackground;
+    border-radius: 10px;
+    color: $primary;
+    border: 1px solid $primary;
 }
 
 // transitions

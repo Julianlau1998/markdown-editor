@@ -6,7 +6,6 @@
                 <h2>
                     Save File
                 </h2>
-                <br>
                 <input
                     v-model="fileName"
                     type="text"
@@ -18,11 +17,12 @@
                     autofocus
                 >
                 <br>
-                <button @click="close" class="button is-secondary">
+                <button @click="close" class="button is-secondary pl-3 pr-3">
                     Close
                 </button>
-                <button type="submit" @click="onSubmit" class="button is-primary">
+                <button type="submit" @click="onSubmit" class="button is-primary pl-4">
                     Save
+                    <i class="fas fa-save pl-1 pr-2" /> 
                 </button>
             </form>
         </div>

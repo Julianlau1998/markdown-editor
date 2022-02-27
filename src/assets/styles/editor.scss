@@ -32,6 +32,34 @@ a:visited {
     color: $third;
 }
 
+//Code
+pre {
+    background-color: $secondBackground;
+    padding: 5px;
+}
+
+//Marking
+mark {
+    background-color: $fourth;
+    padding: 1px 5px 1px 5px;
+}
+
+// Tables
+tr, td {
+    min-width: 5rem;
+    padding: 0 10px 0 10px;
+}
+th, td {
+    padding: 5px;
+    border: 1px solid $primary;
+    margin: 20px;
+}
+
+blockquote {
+    background-color: $secondBackground;
+    border-left: 7px solid $primary;
+    padding-left: 4px;
+}
 
 @media (min-width: 1500px) {
     .is-markdown-content {

@@ -1,7 +1,7 @@
 @import './variables.scss';
 
 .is-editor-wrapper {
-    margin: 0.5rem;
+    margin-top: 4.5rem;
 }
 
 .is-editor {
@@ -22,8 +22,16 @@
     word-break: break-all;
 }
 
+.buttonsWrapper {
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    margin-bottom: -2rem;
+}
+
 img {
-    max-width: 69vw;
+    width: 68.5vw;
+    max-width: 30rem;
 }
 a {
     color: $secondary;

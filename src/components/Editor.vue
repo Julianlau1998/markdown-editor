@@ -1,41 +1,36 @@
 <template>
   <div class="is-editor-wrapper">
-        <transition name="fade" mode="out-in">
-            <span v-if="!preview" :key="1">
-                <button
-                    @click="preview = !preview"
-                    class="button is-primary mt-5 pl-4"
-                >
-                    Preview
-                    <i class="fas fa-eye pl-1 pr-2" /> 
-                </button>
-                <button
-                    v-if="!preview"
-                    :key="1"
-                    class="button is-primary ml-4 pl-4"
-                    @click="saveFileModalOpen = true"
-                >
-                    Save File
-                    <i class="fas fa-download pl-1 pr-2" /> 
-                </button>
-            </span>
-            <span v-else :key="2">
-                <button
-                    @click="preview = !preview"
-                    class="button is-primary mt-5 pl-4"
-                >
-                    Edit
-                    <i class="fas fa-highlighter pl-1 pr-2" /> 
-                </button>
-                <!-- <button
-                    class="button is-primary ml-3 pl-4" 
-                    @click="saveFileModalOpen = true"
-                >
-                    Save File
-                    <i class="fas fa-download pl-1 pr-2" /> 
-                </button> -->
-            </span>
-        </transition>
+        <div class="buttonsWrapper">
+            <transition name="fade" mode="out-in">
+                <span v-if="!preview" :key="1">
+                    <button
+                        @click="preview = !preview"
+                        class="button is-primary mt-5 pl-4"
+                    >
+                        Preview
+                        <i class="fas fa-eye pl-1 pr-2" /> 
+                    </button>
+                    <button
+                        v-if="!preview"
+                        :key="1"
+                        class="button is-primary ml-4 pl-4"
+                        @click="saveFileModalOpen = true"
+                    >
+                        Save File
+                        <i class="fas fa-download pl-1 pr-2" /> 
+                    </button>
+                </span>
+                <span v-else :key="2">
+                    <button
+                        @click="preview = !preview"
+                        class="button is-primary mt-5 pl-4 is-center"
+                    >
+                        Edit
+                        <i class="fas fa-highlighter pl-1 pr-2" /> 
+                    </button>
+                </span>
+            </transition>
+        </div>
         <br>
         <br>
         <transition name="fade" mode="out-in">

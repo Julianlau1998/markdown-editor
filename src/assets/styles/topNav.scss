@@ -2,6 +2,9 @@
 
 .is-topnav {
     width: 99.8vw;
+    position: fixed;
+    top: 0;
+    left: 0;
     background-color: $secondBackground;
     border-bottom-left-radius: 30px;
     border-bottom-right-radius: 30px;

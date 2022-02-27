@@ -10,7 +10,7 @@
                     v-model="fileName"
                     type="text"
                     placeholder="File Name"
-                    class="input"
+                    class="input mt-2"
                     max="255"
                     min="1"
                     required

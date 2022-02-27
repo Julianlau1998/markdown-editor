@@ -16,8 +16,46 @@
 
 .is-markdown-content {
     text-align: left !important;
-    max-width: 90vw;
-    margin: 0 1rem 0 1rem;
+    max-width: 85vw;
+    margin: 0 5rem 0 5rem;
     padding: 10px;
     word-break: break-all;
+}
+
+img {
+    max-width: 69vw;
+}
+a {
+    color: $secondary;
+}
+a:visited {
+    color: $third;
+}
+
+
+@media (min-width: 1500px) {
+    .is-markdown-content {
+        max-width: 110rem;
+        margin: 0 20vw 0 20vw;
+    }
+}
+
+@media (min-width: 2000px) {
+    .is-markdown-content {
+        max-width: 110rem;
+        margin: 0 30vw 0 30vw;
+    }
+}
+
+@media (max-width: 605px) {
+    .is-markdown-content {
+        max-width: 85vw;
+        margin: 0 1rem 0 1rem;
+    }
+}
+@media (max-width: 380px) {
+    .is-markdown-content {
+        max-width: 85vw;
+        margin: 0;
+    }
 }

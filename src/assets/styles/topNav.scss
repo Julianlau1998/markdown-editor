@@ -30,7 +30,10 @@
     right: 1rem;
     top: 2rem;
     font-size: 1.5rem;
-    line-height: 1.7;
+}
+
+.is-playBillingSetting {
+    line-height: 1 !important;
 }
 
 .setting:hover, .setting:active {
@@ -50,4 +53,9 @@ label.label input[type="file"] {
   }
   .label:valid+span {
     color: #ffffff;
+  }
+
+  .hr {
+      border-top: 2px solid $secondary;
+      margin: 10px;
   }

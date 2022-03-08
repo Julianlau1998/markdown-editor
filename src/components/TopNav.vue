@@ -14,8 +14,20 @@
                             Import File
                         </span>
                     </label>
-                    <span v-if="shareAvailable" @click="share" class="is-pointer mt-6 setting noselect">
-                        Share File
+                    <span v-if="shareAvailable">
+                        <div class="hr" />
+                        <span @click="share" class="is-pointer mt-6 setting noselect">
+                            Share File
+                        </span>
+                    </span>
+                    <span v-if="settings && playBillingSupported">
+                        <div class="hr" />
+                        <span
+                            @click="makePurchase()"
+                            class="is-pointer mt-6 setting noselect is-playBillingSetting"
+                        >
+                            Support the Developer
+                        </span>
                     </span>
                 </div>
                 <i
@@ -33,10 +45,12 @@ export default {
     data () {
         return {
             settings: false,
-            shareAvailable: false
+            shareAvailable: false,
+            playBillingSupported: false
         }
     },
     created () {
+        this.checkPlayBillingAvailable()
         if(navigator.share !== undefined) {
             this.shareAvailable = true
         }
@@ -51,6 +65,38 @@ export default {
             reader.onload = e => this.$emit('fileInput', e.target.result);
             reader.readAsText(file);
             this.settings = false
+        },
+        async checkPlayBillingAvailable () {
+            if ('getDigitalGoodsService' in window) {
+            // Digital Goods API is supported!
+                const service = await window.getDigitalGoodsService('https://play.google.com/billing');
+                if (service) {
+                    this.playBillingSupported = true
+                }
+            }
+        },
+        async makePurchase(service) {
+        // Define the preferred payment method and item ID
+            const paymentMethods = [{
+                supportedMethods: "https://play.google.com/billing",
+                data: {
+                    sku: 'support',
+                }
+            }]
+            const paymentDetails = {
+                total: {
+                    label: `Total`,
+                    amount: {currency: `USD`, value: `10`}
+                }
+            }
+            const request = new PaymentRequest(paymentMethods, paymentDetails);
+            try {
+                const paymentResponse = await request.show();
+                const {purchaseToken} = paymentResponse.details;
+                await service.acknowledge(purchaseToken, 'repeatable');
+            } catch(e) {
+                alert('Something went wrong. Please try again.')
+            }
         }
     }
 }

@@ -94,6 +94,9 @@ blockquote {
         max-width: 85vw;
         margin: 0;
     }
+}
+
+@media (max-width: 300px) {
     .is-editor {
         height: 50vh;
     }

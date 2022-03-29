@@ -68,7 +68,6 @@ export default {
         },
         async checkPlayBillingAvailable () {
             if ('getDigitalGoodsService' in window) {
-            // Digital Goods API is supported!
                 const service = await window.getDigitalGoodsService('https://play.google.com/billing');
                 if (service) {
                     this.playBillingSupported = true
@@ -76,7 +75,6 @@ export default {
             }
         },
         async makePurchase(service) {
-        // Define the preferred payment method and item ID
             const paymentMethods = [{
                 supportedMethods: "https://play.google.com/billing",
                 data: {

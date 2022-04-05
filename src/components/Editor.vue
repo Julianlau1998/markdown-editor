@@ -11,7 +11,7 @@
                         <i class="fas fa-eye pl-1 pr-2" /> 
                     </button>
                     <button
-                        v-if="!preview"
+                        v-if="!preview && !iOS"
                         :key="1"
                         class="button is-primary ml-4 pl-4"
                         @click="saveFileModalOpen = true"
@@ -88,6 +88,11 @@ export default {
         },
         share (val) {
             if (val) this.shareFile()
+        }
+    },
+    computed: {
+        iOS () {
+            return this.$store.state.iOS
         }
     },
     methods: {

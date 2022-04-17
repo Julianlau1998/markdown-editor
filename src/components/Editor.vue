@@ -11,10 +11,10 @@
                         <i class="fas fa-eye pl-1 pr-2" /> 
                     </button>
                     <button
-                        v-if="!preview && !iOS"
+                        v-if="!preview && (!iOS || shareAvailable)"
                         :key="1"
                         class="button is-primary ml-4 pl-4"
-                        @click="saveFileModalOpen = true"
+                        @click="saveFileModal"
                     >
                         Save File
                         <i class="fas fa-download pl-1 pr-2" /> 
@@ -79,7 +79,8 @@ export default {
             inputText: '',
             preview: false,
             markdownWrapper: '',
-            saveFileModalOpen: false
+            saveFileModalOpen: false,
+            shareAvailable: false
         }
     },
     watch: {
@@ -95,9 +96,16 @@ export default {
             return this.$store.state.iOS
         }
     },
+    created () {
+        this.shareAvailable = window.navigator.share
+    },
     methods: {
         saveFileModal () {
-            this.saveFileModalOpen = true
+            if (!this.iOS) {
+                this.saveFileModalOpen = true
+                return
+            }
+            this.shareFile()
         },
         createFileLink (fileName) {
             const file = new Blob([this.inputText], { type: "data:text/csv;charset=utf-8" }, `${fileName}.md`)
@@ -119,7 +127,7 @@ export default {
                     "text": this.inputText
                 })
             }
-        },
+        }
     }
 }
 </script>

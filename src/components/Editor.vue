@@ -98,16 +98,16 @@ export default {
         }
     },
     created () {
-        window.visualViewport.addEventListener(
-            'resize', 
-            () => {
-                if (this.iOS) {
-                    setTimeout(() => {
-                        window.scrollTo(0)
-                    }, 200)
-                }
-            } 
-        )
+        // window.visualViewport.addEventListener(
+        //     'resize', 
+        //     () => {
+        //         if (this.iOS) {
+        //             setTimeout(() => {
+        //                 window.scrollTo(0)
+        //             }, 200)
+        //         }
+        //     } 
+        // )
         this.shareAvailable = window.navigator.share
     },
     methods: {

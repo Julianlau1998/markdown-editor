@@ -1,7 +1,7 @@
 <template>
   <div>
     <topNav @fileInput="fileInput" @share="shareFile" />
-    <Editor :inputFile="inputFile" :share="share" />
+    <Editor :share="share" />
   </div>
 </template>
 
@@ -23,7 +23,7 @@ export default {
   },
   methods: {
     fileInput (file) {
-      this.inputFile = file
+      this.$store.state.inputFile = file
     },
     shareFile () {
       this.share = true

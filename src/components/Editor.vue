@@ -64,11 +64,6 @@ export default {
         VueMarkdown
     },
     props: {
-        inputFile: {
-            type: String,
-            required: false,
-            default: ''
-        },
         share: {
             type: Boolean,
             required: true
@@ -85,7 +80,10 @@ export default {
     },
     watch: {
         inputFile (val) {
-            if (val != '') this.inputText = val
+            if (val != '') {
+                this.inputText = val
+                this.$store.state.inputFile = ''
+            }
         },
         share (val) {
             if (val) this.shareFile()
@@ -94,6 +92,9 @@ export default {
     computed: {
         iOS () {
             return this.$store.state.iOS
+        },
+        inputFile () {
+            return this.$store.state.inputFile
         }
     },
     created () {

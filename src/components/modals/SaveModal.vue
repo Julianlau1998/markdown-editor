@@ -38,7 +38,9 @@ export default {
     },
     methods: {
         onSubmit () {
-            this.$emit('save', this.fileName)
+            if (this.fileName.length) {
+                this.$emit('save', this.fileName)
+            }
         },
         close () {
             this.$emit('close')

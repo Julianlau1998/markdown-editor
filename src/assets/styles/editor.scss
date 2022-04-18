@@ -102,8 +102,26 @@ blockquote {
     }
 }
 
+@media (max-height: 625px) {
+    .is-editor {
+        height: 60vh;
+    }
+}
+
+@media (max-height: 560px) {
+    .is-editor {
+        height: 55vh;
+    }
+}
+
 @media (max-height: 500px) {
     .is-editor {
         height: 50vh;
+    }
+}
+
+@media (max-height: 446px) {
+    .is-editor {
+        height: 45vh;
     }
 }

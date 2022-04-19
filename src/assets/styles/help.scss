@@ -1,0 +1,54 @@
+.is-help {
+    margin-left: 1.5rem;
+    text-align: left;
+    width: 100vw;
+}
+
+.is-header {
+    margin-left: -1.5rem;
+    text-align: center;
+}
+
+.is-help-header {
+    color: $secondary;
+}
+
+.is-help-header-headers {
+    margin-top: 6rem;
+}
+
+.is-help-divider {
+    width: 95%;
+    margin-left: -0.5rem;
+}
+
+.is-markdown-help-element {
+    margin-top: -0.9rem;
+}
+
+// .is-help-preview {
+//     width: 75%;
+//     padding: 1px 10px 1px 10px;
+//     margin: 20px 0 20px 0;
+//     box-shadow: 0px 0px 5px 2px $primary;
+// }
+
+@media (min-width: 700px) {
+    .is-help {
+        margin-left: 8rem;
+    }
+    .is-help-divider {
+        width: 65%;
+        margin-left: -0.5rem;
+    }
+}
+
+@media (min-width: 1000px) {
+    .is-help {
+        margin-left: 13rem;
+    }
+    .is-help-divider {
+        width: 65%;
+        margin-left: -0.5rem;
+    }
+}

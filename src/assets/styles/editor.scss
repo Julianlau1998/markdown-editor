@@ -67,6 +67,7 @@ blockquote {
     background-color: $secondBackground;
     border-left: 7px solid $primary;
     padding-left: 4px;
+    max-width: 30rem;
 }
 
 @media (min-width: 1500px) {

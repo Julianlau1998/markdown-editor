@@ -8,19 +8,25 @@
             </div>
             <div class="column settingsWrapper">
                 <div v-if="settings" class="settingsItems settings">
-                    <label class="label is-pointer setting noselect">
+                    <label v-if="helpAvailable" class="label is-pointer setting noselect">
                         <input @change="fileInput" accept=".txt, .md" type="file" required/>
                         <span>
                             Import File
                         </span>
                     </label>
-                    <span v-if="shareAvailable">
+                    <span v-if="shareAvailable && helpAvailable">
                         <div class="hr" />
                         <span @click="share" class="is-pointer mt-6 setting noselect">
                             Share File
                         </span>
                     </span>
-                    <span v-if="settings && playBillingSupported">
+                    <span v-if="helpAvailable">
+                        <div class="hr" />
+                        <span @click="help" class="is-pointer mt-6 setting noselect">
+                            Help
+                        </span>
+                    </span>
+                    <span v-if="playBillingSupported">
                         <div class="hr" />
                         <span
                             @click="makePurchase()"
@@ -31,6 +37,7 @@
                     </span>
                 </div>
                 <i
+                    v-if="helpAvailable || playBillingSupported"
                     class="fas fa-ellipsis-v settings-icon is-pointer"
                     @click="settings=!settings"
                 />
@@ -42,6 +49,12 @@
 <script>
 export default {
     name: 'TopNav',
+    props: {
+        helpAvailable: {
+            required: false,
+            default: true
+        }
+    },
     data () {
         return {
             settings: false,
@@ -73,6 +86,9 @@ export default {
                     this.playBillingSupported = true
                 }
             }
+        },
+        help () {
+            this.$router.push('/help')
         },
         async makePurchase(service) {
             const paymentMethods = [{

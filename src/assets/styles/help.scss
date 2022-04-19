@@ -5,7 +5,7 @@
 }
 
 .is-header {
-    margin-left: -1.5rem;
+    padding-left: -1.5rem;
     text-align: center;
 }
 
@@ -35,7 +35,7 @@
 
 @media (min-width: 700px) {
     .is-help {
-        margin-left: 8rem;
+        padding-left: 8rem;
     }
     .is-help-divider {
         width: 65%;
@@ -45,7 +45,7 @@
 
 @media (min-width: 1000px) {
     .is-help {
-        margin-left: 13rem;
+        padding-left: 13rem;
     }
     .is-help-divider {
         width: 65%;

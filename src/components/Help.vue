@@ -163,20 +163,26 @@
             <p>
                 Preview:
             </p>
-            <blockquote class="mb-6">
+            <blockquote class="mb-7">
                 This is a blockquote
             </blockquote>
 
+        </div>
+
+        <div class="is-center">
+            <button @click="home" class="button home">
+                Home
+            </button>
         </div>
   </div>
 </template>
 
 <script>
 export default {
-
+    methods: {
+        home () {
+            this.$router.push('/')
+        }
+    }
 }
 </script>
-
-<style>
-
-</style>

@@ -1,12 +1,24 @@
+.is-help-page {
+    width: 100vw;
+}
+
 .is-help {
     margin-left: 1.5rem;
     text-align: left;
     width: 100vw;
+    max-width: 60rem;
 }
 
 .is-header {
     padding-left: -1.5rem;
     text-align: center;
+}
+
+.is-center {
+    position: fixed;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 .is-help-header {

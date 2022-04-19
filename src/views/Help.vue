@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="is-help-page">
         <topNav :helpAvailable="false" />
         <Help />        
     </div>

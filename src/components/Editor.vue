@@ -23,7 +23,7 @@
                 <span v-else :key="2">
                     <button
                         @click="preview = !preview"
-                        class="button is-primary mt-5 pl-4 is-center"
+                        class="button is-primary mt-5 pl-4"
                     >
                         Edit
                         <i class="fas fa-highlighter pl-1 pr-2" /> 

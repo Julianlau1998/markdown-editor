@@ -1,8 +1,8 @@
 <template>
     <div class="is-topnav p-3 pb-4 pt-4">
         <div class="columns is-mobile">
-            <div class="column ml-4">
-                <span>
+            <div class="column ml-4 is-pointer">
+                <span @click="home">
                     md-Editor
                 </span>
             </div>
@@ -89,6 +89,10 @@ export default {
         },
         help () {
             this.$router.push('/help')
+        },
+        home () {
+            if (this.$route.path === '/') return
+            this.$router.push('/')
         },
         async makePurchase(service) {
             const paymentMethods = [{

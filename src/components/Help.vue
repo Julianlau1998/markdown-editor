@@ -4,7 +4,7 @@
             Headers:
         </h1>
         <span>
-            #Large Headline: 
+            # Large Headline: 
         </span>
         <br>
         <div class="is-help-preview">
@@ -17,7 +17,7 @@
         </div>
 
         <span>
-            ##Medium Headline: 
+            ## Medium Headline: 
         </span>
         <div class="is-help-preview">
             <p>
@@ -28,7 +28,7 @@
             </h2>
         </div>
 
-        ###Small Headline: 
+        ### Small Headline: 
 
         <div class="is-help-preview">
             <p>

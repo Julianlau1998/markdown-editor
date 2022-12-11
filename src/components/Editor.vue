@@ -45,6 +45,15 @@
                 <VueMarkdown :source="inputText" />
             </div>
         </transition>
+
+        <button
+            v-if="iosLiteApp"
+            @click="webviewTrigger"
+            class="button is-ads-button is-border-secondary mt-5"
+        >
+          Get Rid of ads
+        </button>
+
         <SaveModal
             v-if="saveFileModalOpen"
             @save="downloadFile"
@@ -95,6 +104,9 @@ export default {
         },
         inputFile () {
             return this.$store.state.inputFile
+        },
+        iosLiteApp () {
+          return window.webkit && window.webkit.messageHandlers
         }
     },
     created () {
@@ -138,6 +150,13 @@ export default {
                     "text": this.inputText
                 })
             }
+        },
+        webviewTrigger () {
+          if (this.iosLiteApp && window.webkit.messageHandlers.webviewTrigger) {
+            window.webkit.messageHandlers.webviewTrigger.postMessage({
+              "message": 'open AppStore:'
+            });
+          }
         }
     }
 }

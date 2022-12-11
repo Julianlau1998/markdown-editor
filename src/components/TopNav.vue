@@ -26,6 +26,15 @@
                             Help
                         </span>
                     </span>
+                    <span v-if="iosLiteApp">
+                          <div class="hr" />
+                          <span
+                              @click="webviewTrigger"
+                              class="is-pointer mt-6 setting noselect is-playBillingSetting"
+                          >
+                              Get Rid Of Ads
+                          </span>
+                    </span>
                     <span v-if="playBillingSupported">
                         <div class="hr" />
                         <span
@@ -36,10 +45,11 @@
                         </span>
                     </span>
                 </div>
-                <i
+                <img
                     v-if="helpAvailable || playBillingSupported"
-                    class="fas fa-ellipsis-v settings-icon is-pointer"
+                    class="is-menu-icon"
                     @click="settings=!settings"
+                    src="../assets/menu.png"
                 />
             </div>
         </div>
@@ -68,11 +78,16 @@ export default {
             this.shareAvailable = true
         }
     },
+    computed: {
+      iosLiteApp () {
+        return window.webkit && window.webkit.messageHandlers
+      }
+    },
     methods: {
         share () {
             this.$emit('share')
         },
-        fileInput (event) {
+        fileInput () {
             const file = event.target.files[0];
             const reader = new FileReader();
             reader.onload = e => this.$emit('fileInput', e.target.result);
@@ -93,6 +108,13 @@ export default {
         home () {
             if (this.$route.path === '/') return
             this.$router.push('/')
+        },
+        webviewTrigger () {
+          if (this.iosLiteApp && window.webkit.messageHandlers.webviewTrigger) {
+            window.webkit.messageHandlers.webviewTrigger.postMessage({
+              "message": 'open AppStore:'
+            });
+          }
         },
         async makePurchase(service) {
             const paymentMethods = [{

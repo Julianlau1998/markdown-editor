@@ -6,8 +6,7 @@
 
 .is-editor {
     width: 90vw;
-    height: 58vh;
-    max-height: 27rem;
+    height: 63vh;
     background-color: $mainBackground;
     border-radius: 20px;
     outline: none;
@@ -85,9 +84,6 @@ blockquote {
     .is-markdown-content {
         max-width: 85vw;
         margin: 0 1rem 0 1rem;
-    }
-    .is-editor {
-        max-height: 20rem;
     }
 }
 @media (max-width: 380px) {

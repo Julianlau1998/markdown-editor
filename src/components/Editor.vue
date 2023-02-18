@@ -8,7 +8,7 @@
                         class="button is-primary mt-5 pl-4"
                     >
                         Preview
-                        <i class="fas fa-eye pl-1 pr-2" /> 
+                        <i class="fas fa-eye pl-1 pr-2" />
                     </button>
                     <button
                         v-if="!preview && (!iOS || shareAvailable)"
@@ -17,7 +17,7 @@
                         @click="saveFileModal"
                     >
                         Save File
-                        <i class="fas fa-download pl-1 pr-2" /> 
+                        <i class="fas fa-download pl-1 pr-2" />
                     </button>
                 </span>
                 <span v-else :key="2">
@@ -26,7 +26,7 @@
                         class="button is-primary mt-5 pl-4"
                     >
                         Edit
-                        <i class="fas fa-highlighter pl-1 pr-2" /> 
+                        <i class="fas fa-highlighter pl-1 pr-2" />
                     </button>
                 </span>
             </transition>
@@ -111,14 +111,14 @@ export default {
     },
     created () {
         // window.visualViewport.addEventListener(
-        //     'resize', 
+        //     'resize',
         //     () => {
         //         if (this.iOS) {
         //             setTimeout(() => {
         //                 window.scrollTo(0)
         //             }, 200)
         //         }
-        //     } 
+        //     }
         // )
         this.shareAvailable = window.navigator.share
     },
@@ -140,7 +140,7 @@ export default {
             let hiddenElement = document.createElement('a')
             hiddenElement.href = link
             hiddenElement.download = `${fileName}.md`
-            hiddenElement.click();  
+            hiddenElement.click();
             this.saveFileModalOpen = false
         },
         shareFile () {
@@ -150,13 +150,6 @@ export default {
                     "text": this.inputText
                 })
             }
-        },
-        webviewTrigger () {
-          if (this.iosLiteApp && window.webkit.messageHandlers.webviewTrigger) {
-            window.webkit.messageHandlers.webviewTrigger.postMessage({
-              "message": 'open AppStore:'
-            });
-          }
         }
     }
 }

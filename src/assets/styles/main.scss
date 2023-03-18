@@ -28,6 +28,11 @@ html {
     border-radius: 20px;
     text-align: center;
     z-index: 11;
+
+    &.is-small {
+        height: 12.5rem !important;
+        top: 9rem;
+    }
 }
 
 .is-modal-wrapper {

@@ -35,6 +35,15 @@
                               Get Rid Of Ads
                           </span>
                     </span>
+                    <span v-if="!iOS">
+                          <div class="hr" />
+                          <span
+                              @click="rateApp"
+                              class="is-pointer mt-6 setting noselect is-playBillingSetting"
+                          >
+                              Rate This App
+                          </span>
+                    </span>
                     <span v-if="playBillingSupported">
                         <div class="hr" />
                         <span
@@ -81,6 +90,9 @@ export default {
     computed: {
       iosLiteApp () {
         return window.webkit && window.webkit.messageHandlers
+      },
+      iOS () {
+        return this.$store.state.iOS
       }
     },
     methods: {
@@ -115,6 +127,9 @@ export default {
               "message": 'open AppStore:'
             });
           }
+        },
+        rateApp () {
+          window.location.href = 'https://play.google.com/store/apps/details?id=app.markdowneditor.jl.com'
         },
         async makePurchase(service) {
             const paymentMethods = [{

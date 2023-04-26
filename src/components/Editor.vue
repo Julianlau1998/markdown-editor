@@ -48,7 +48,7 @@
 
         <button
             v-if="iosLiteApp"
-            @click="webviewTrigger"
+            @click="openAppStore"
             class="button is-ads-button is-border-secondary mt-5"
         >
           Get Rid of ads
@@ -110,17 +110,15 @@ export default {
         }
     },
     created () {
-        // window.visualViewport.addEventListener(
-        //     'resize',
-        //     () => {
-        //         if (this.iOS) {
-        //             setTimeout(() => {
-        //                 window.scrollTo(0)
-        //             }, 200)
-        //         }
-        //     }
-        // )
         this.shareAvailable = window.navigator.share
+        if (this.iosLiteApp) {
+          setTimeout(() => {
+            this.showInterstitial()
+          }, 20000)
+          setInterval(() => {
+            this.showInterstitial()
+          }, 70000)
+        }
     },
     methods: {
         saveFileModal () {
@@ -150,6 +148,21 @@ export default {
                     "text": this.inputText
                 })
             }
+        },
+        openAppStore () {
+          if (this.iosLiteApp && window.webkit.messageHandlers.webviewTrigger) {
+            window.webkit.messageHandlers.webviewTrigger.postMessage({
+              "message": 'openAppStore:'
+            });
+          }
+        },
+        showInterstitial () {
+          alert('test')
+          if (this.iosLiteApp && window.webkit.messageHandlers.webviewTrigger) {
+            window.webkit.messageHandlers.webviewTrigger.postMessage({
+              "message": 'showInterstitial'
+            });
+          }
         }
     }
 }

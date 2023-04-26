@@ -150,15 +150,13 @@ export default {
             }
         },
         openAppStore () {
-          if (this.iosLiteApp) {
-            window.webkit.messageHandlers.webviewTrigger.postMessage({
+            window.webkit.messageHandlers.openAppStore.postMessage({
               "message": 'openAppStore'
-            });
-          }
+            })
         },
         showInterstitial () {
           if (this.iosLiteApp) {
-            window.webkit.messageHandlers.webviewTrigger.postMessage({
+            window.webkit.messageHandlers.showInterstitial.postMessage({
               "message": 'showInterstitial'
             })
           }

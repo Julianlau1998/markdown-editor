@@ -150,14 +150,14 @@ export default {
             }
         },
         openAppStore () {
-          if (this.iosLiteApp && window.webkit.messageHandlers.webviewTrigger) {
+          if (this.iosLiteApp && window.webkit.messageHandlers.openAppStore) {
             window.webkit.messageHandlers.webviewTrigger.postMessage({
-              "message": 'openAppStore:'
+              "message": 'openAppStore'
             });
           }
         },
         showInterstitial () {
-          if (this.iosLiteApp && window.webkit.messageHandlers.webviewTrigger) {
+          if (this.iosLiteApp && window.webkit.messageHandlers.showInterstitial) {
             window.webkit.messageHandlers.webviewTrigger.postMessage({
               "message": 'showInterstitial'
             });

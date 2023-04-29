@@ -19,7 +19,7 @@ html {
 
 .modal {
     margin: auto;
-    position: absolute;
+    position: fixed;
     top: 0; left: 0; bottom: 0; right: 0;
     width: 20rem;
     height: 14rem;
@@ -36,7 +36,7 @@ html {
 }
 
 .is-modal-wrapper {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100vw;

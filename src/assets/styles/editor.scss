@@ -67,6 +67,20 @@ blockquote {
     max-width: 30rem;
 }
 
+.prism-editor__editor, .prism-editor__textarea {
+    padding: 0 1rem !important;
+    border: 1px solid $primary !important;
+}
+
+.prism-editor-wrapper .prism-editor__editor, .prism-editor-wrapper .prism-editor__textarea {
+    word-break: break-all;
+}
+
+.prism-editor-wrapper .prism-editor__textarea, .prism-editor-wrapper .prism-editor__editor, .prism-editor-wrapper .prism-editor__textarea {
+    width: 98%;
+}
+
+
 @media (min-width: 1500px) {
     .is-markdown-content {
         max-width: 110rem;

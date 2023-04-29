@@ -35,11 +35,11 @@
         <br>
         <transition name="fade" mode="out-in">
             <div v-if="!preview" :key="1">
-                <textarea
-                    v-model="inputText"
-                    class="is-editor pt-5 pb-5 is-primary mt-1"
-                    placeholder="Type your markdown here"
-                />
+              <prism-editor
+                  class="my-editor"
+                  v-model="inputText"
+                  :highlight="highlighter"
+                  line-numbers />
             </div>
             <div v-else :key="2" class="is-markdown-content">
                 <VueMarkdown :source="inputText" />
@@ -65,12 +65,22 @@
 <script>
 import SaveModal from '@/components/modals/SaveModal'
 import VueMarkdown from 'vue-markdown'
+import { PrismEditor } from 'vue-prism-editor';
+import 'vue-prism-editor/dist/prismeditor.min.css'; // import the styles somewhere
+import { highlight } from "prismjs/components/prism-core";
+import Prism from "prismjs"
+import 'prismjs/components/prism-clike';
+import 'prismjs/components/prism-markdown';
+import 'prismjs/components/prism-css';
+import 'prismjs/components/prism-javascript';
+import 'prismjs/themes/prism-tomorrow.css';
 
 export default {
     name: 'Editor',
     components: {
         SaveModal,
-        VueMarkdown
+        VueMarkdown,
+        PrismEditor
     },
     props: {
         share: {
@@ -80,11 +90,11 @@ export default {
     },
     data () {
         return  {
-            inputText: '',
+            inputText: '\n\n\n\n\n\n\n\n\n\n\n\n\n\n',
             preview: false,
             markdownWrapper: '',
             saveFileModalOpen: false,
-            shareAvailable: false
+            shareAvailable: false,
         }
     },
     watch: {
@@ -160,6 +170,17 @@ export default {
               "message": 'showInterstitial'
             })
           }
+        },
+        highlighter(code) {
+          let test = code
+          let test2 = code
+          //console.log(code.replace(/```(.*?)```/g, (match, content) => highlight(content, this.javascript, '')))
+          if (Prism.languages.markdown) {
+            this.javascript = Prism.languages.markdown
+          }
+          test = code.replace(/```(.*?)```/g, (match, content) => highlight(content, this.javascript, ''))
+          code = test2
+          return highlight(test, this.javascript, ''); // languages.<insert language> to return html with markup
         }
     }
 }

@@ -172,15 +172,10 @@ export default {
           }
         },
         highlighter(code) {
-          let test = code
-          let test2 = code
-          //console.log(code.replace(/```(.*?)```/g, (match, content) => highlight(content, this.javascript, '')))
           if (Prism.languages.markdown) {
             this.javascript = Prism.languages.markdown
           }
-          test = code.replace(/```(.*?)```/g, (match, content) => highlight(content, this.javascript, ''))
-          code = test2
-          return highlight(test, this.javascript, ''); // languages.<insert language> to return html with markup
+          return highlight(code, this.javascript, ''); // languages.<insert language> to return html with markup
         }
     }
 }

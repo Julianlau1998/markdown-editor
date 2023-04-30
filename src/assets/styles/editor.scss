@@ -80,6 +80,10 @@ blockquote {
     width: 98%;
 }
 
+.prism-editor-wrapper {
+    overflow: hidden;
+}
+
 .prism-editor__line-numbers {
     margin-top: 0.5rem;
 }

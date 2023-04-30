@@ -54,11 +54,10 @@
                         </span>
                     </span>
                 </div>
-                <img
+                <i
                     v-if="helpAvailable || playBillingSupported"
-                    class="is-menu-icon"
+                    class="is-menu-icon fas fa-bars"
                     @click="settings=!settings"
-                    src="../assets/menu.png"
                 />
             </div>
         </div>

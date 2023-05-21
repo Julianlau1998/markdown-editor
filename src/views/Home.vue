@@ -2,7 +2,6 @@
   <div>
     <topNav @fileInput="fileInput" @share="shareFile" />
     <Editor :share="share" />
-    <AdCard v-if="!iOS" class="mt-5" />
     <RateModal v-if="showRateModal" @openStore="openStore" @close="showRateModal=false" />
   </div>
 </template>
@@ -10,7 +9,6 @@
 <script>
 import Editor from '@/components/Editor.vue'
 import topNav from '@/components/TopNav.vue'
-import AdCard from "@/components/ads/AdCard"
 import RateModal from "@/components/modals/RateModal"
 
 export default {
@@ -18,7 +16,6 @@ export default {
   components: {
     Editor,
     topNav,
-    AdCard,
     RateModal
   },
   data () {

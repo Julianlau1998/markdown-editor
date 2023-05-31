@@ -121,11 +121,9 @@ export default {
             this.$router.push('/')
         },
         webviewTrigger () {
-          if (this.iosLiteApp && window.webkit.messageHandlers.webviewTrigger) {
-            window.webkit.messageHandlers.webviewTrigger.postMessage({
+            window.webkit.messageHandlers.openAppStore.postMessage({
               "message": 'open AppStore:'
             });
-          }
         },
         rateApp () {
           window.location.href = 'https://play.google.com/store/apps/details?id=app.markdowneditor.jl.com'

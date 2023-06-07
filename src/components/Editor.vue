@@ -122,12 +122,12 @@ export default {
     created () {
         this.shareAvailable = window.navigator.share
         if (this.iosLiteApp) {
-          setTimeout(() => {
+/*          setTimeout(() => {
             this.showInterstitial()
-          }, 20000)
+          }, 20000)*/
           setInterval(() => {
             this.showInterstitial()
-          }, 70000)
+          }, 60000)
         }
     },
     methods: {

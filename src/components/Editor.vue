@@ -65,15 +65,15 @@
 <script>
 import SaveModal from '@/components/modals/SaveModal'
 import VueMarkdown from 'vue-markdown'
-import { PrismEditor } from 'vue-prism-editor';
-import 'vue-prism-editor/dist/prismeditor.min.css'; // import the styles somewhere
-import { highlight } from "prismjs/components/prism-core";
+import { PrismEditor } from 'vue-prism-editor'
+import 'vue-prism-editor/dist/prismeditor.min.css'
+import { highlight } from "prismjs/components/prism-core"
 import Prism from "prismjs"
-import 'prismjs/components/prism-clike';
-import 'prismjs/components/prism-markdown';
-import 'prismjs/components/prism-css';
-import 'prismjs/components/prism-javascript';
-import 'prismjs/themes/prism-tomorrow.css';
+import 'prismjs/components/prism-clike'
+import 'prismjs/components/prism-markdown'
+import 'prismjs/components/prism-css'
+import 'prismjs/components/prism-javascript'
+import 'prismjs/themes/prism-tomorrow.css'
 
 export default {
     name: 'Editor',

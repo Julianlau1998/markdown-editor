@@ -4,7 +4,7 @@
             <transition name="fade" mode="out-in">
                 <span v-if="!preview" :key="1">
                     <button
-                        @click="preview = !preview"
+                        @click="previewToggle"
                         class="button is-primary mt-5 pl-4"
                     >
                         Preview
@@ -22,7 +22,7 @@
                 </span>
                 <span v-else :key="2">
                     <button
-                        @click="preview = !preview"
+                        @click="previewToggle"
                         class="button is-primary mt-5 pl-4"
                     >
                         Edit
@@ -95,6 +95,7 @@ export default {
             markdownWrapper: '',
             saveFileModalOpen: false,
             shareAvailable: false,
+            clicks: 0
         }
     },
     watch: {
@@ -121,21 +122,22 @@ export default {
     },
     created () {
         this.shareAvailable = window.navigator.share
-        if (this.iosLiteApp) {
-/*          setTimeout(() => {
-            this.showInterstitial()
-          }, 20000)*/
-          setInterval(() => {
-            this.showInterstitial()
-          }, 60000)
+        this.clicks = parseInt(localStorage.getItem('clickedGenerate'))
+        if(this.clicks == null || isNaN(this.clicks)) {
+            this.clicks = 0
         }
     },
     methods: {
+        previewToggle () {
+            this.preview = !this.preview
+            this.addClick()
+        },
         saveFileModal () {
             if (!this.iOS) {
                 this.saveFileModalOpen = true
                 return
             }
+            this.addClick()
             this.shareFile()
         },
         createFileLink (fileName) {
@@ -163,6 +165,16 @@ export default {
             window.webkit.messageHandlers.openAppStore.postMessage({
               "message": 'openAppStore'
             })
+        },
+        addClick () {
+            this.clicks++
+            localStorage.setItem('clicked', this.clickedGenerate)
+
+            if(this.clicks > 5) {
+                this.clicks = 0
+                localStorage.setItem('clicked', 0)
+                this.showInterstitial()
+            }
         },
         showInterstitial () {
           if (this.iosLiteApp) {

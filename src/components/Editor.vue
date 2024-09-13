@@ -117,7 +117,7 @@ export default {
             return this.$store.state.inputFile
         },
         iosLiteApp () {
-          return window.webkit && window.webkit.messageHandlers
+          return window.webkit && window.webkit.messageHandlers.openAppStore
         }
     },
     created () {

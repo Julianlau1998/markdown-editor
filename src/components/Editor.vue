@@ -170,7 +170,7 @@ export default {
             this.clicks++
             localStorage.setItem('clicked', this.clickedGenerate)
 
-            if(this.clicks > 5) {
+            if(this.clicks > 3) {
                 this.clicks = 0
                 localStorage.setItem('clicked', 0)
                 this.showInterstitial()
